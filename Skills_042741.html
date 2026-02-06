@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills</title>
+    <style>
+        :root {
+            --bg-main: #0f172a;
+            --bg-card: #1e293b;
+            --accent: #38bdf8;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: 'Segoe UI', sans-serif;
+            padding: 2rem;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--accent);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .skill-card {
+            background-color: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-icon {
+            width: 50px;
+            height: 50px;
+            margin-right: 1.5rem;
+            object-fit: contain;
+            /* Placeholder styling if image is missing */
+            background-color: #334155;
+            border-radius: 8px;
+            padding: 5px;
+        }
+
+        .skill-info {
+            flex: 1;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .progress-bg {
+            background-color: #334155;
+            height: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: var(--accent);
+            border-radius: 5px;
+            width: 0%;
+            /* Animate this */
+            transition: width 1s ease-out;
+        }
+
+        .level-text {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 5px;
+        }
+
+        @media (max-width: 500px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Technical Proficiency</h2>
+
+    <div class="skills-grid">
+
+        <div class="skill-card">
+            <img src="/assets/HTML.png" alt="HTML" class="skill-icon">
+            <div class="skill-info">
+                <div class="skill-header">
+                    <span>HTML</span>
+                </div>
+                <div class="progress-bg">
+                    <div class="progress-fill" style="width: 91%"></div>
+                </div>
+                <div class="level-text">Master</div>
+            </div>
+        </div>
+
+        <div class="skill-card">
+            <img src="/assets/CSS.png" alt="CSS" class="skill-icon">
+            <div class="skill-info">
+                <div class="skill-header">
+                    <span>CSS</span>
+                </div>
+                <div class="progress-bg">
+                    <div class="progress-fill" style="width: 78%"></div>
+                </div>
+                <div class="level-text">Expert</div>
+            </div>
+        </div>
+
+        <div class="skill-card">
+            <img src="/assets/JS.png" alt="JS" class="skill-icon">
+            <div class="skill-info">
+                <div class="skill-header">
+                    <span>JavaScript</span>
+                </div>
+                <div class="progress-bg">
+                    <div class="progress-fill" style="width: 70%"></div>
+                </div>
+                <div class="level-text">Advanced</div>
+            </div>
+        </div>
+
+        <div class="skill-card">
+            <img src="/assets/CS.png" alt="C#" class="skill-icon">
+            <div class="skill-info">
+                <div class="skill-header">
+                    <span>C#</span>
+                </div>
+                <div class="progress-bg">
+                    <div class="progress-fill" style="width: 59%"></div>
+                </div>
+                <div class="level-text">Intermediate</div>
+            </div>
+        </div>
+
+        <div class="skill-card">
+            <img src="/assets/Java.png" alt="Java" class="skill-icon">
+            <div class="skill-info">
+                <div class="skill-header">
+                    <span>Java</span>
+                </div>
+                <div class="progress-bg">
+                    <div class="progress-fill" style="width: 51%"></div>
+                </div>
+                <div class="level-text">Intermediate</div>
+            </div>
+        </div>
+
+        <div class="skill-card">
+            <img src="/assets/C++.png" alt="Java" class="skill-icon">
+            <div class="skill-info">
+                <div class="skill-header">
+                    <span>C++</span>
+                </div>
+                <div class="progress-bg">
+                    <div class="progress-fill" style="width: 70%"></div>
+                </div>
+                <div class="level-text">Advanced</div>
+            </div>
+        </div>
+
+        <div class="skill-card">
+            <img src="/assets/Python.png" alt="Python" class="skill-icon">
+            <div class="skill-info">
+                <div class="skill-header">
+                    <span>Python</span>
+                </div>
+                <div class="progress-bg">
+                    <div class="progress-fill" style="width: 53%"></div>
+                </div>
+                <div class="level-text">Intermediate</div>
+            </div>
+        </div>
+
+        <div class="skill-card">
+            <img src="/assets/Rust.png" alt="Java" class="skill-icon">
+            <div class="skill-info">
+                <div class="skill-header">
+                    <span>Rust</span>
+                </div>
+                <div class="progress-bg">
+                    <div class="progress-fill" style="width: 68%"></div>
+                </div>
+                <div class="level-text">Intermediate</div>
+            </div>
+        </div>
+
+        <div class="skill-card">
+            <img src="/assets/Go.png" alt="Java" class="skill-icon">
+            <div class="skill-info">
+                <div class="skill-header">
+                    <span>Go</span>
+                </div>
+                <div class="progress-bg">
+                    <div class="progress-fill" style="width: 50%"></div>
+                </div>
+                <div class="level-text">Intermediate</div>
+            </div>
+        </div>
+
+        <div class="skill-card">
+            <img src="/assets/Rust.png" alt="Java" class="skill-icon">
+            <div class="skill-info">
+                <div class="skill-header">
+                    <span>Rust</span>
+                </div>
+                <div class="progress-bg">
+                    <div class="progress-fill" style="width: 61%"></div>
+                </div>
+                <div class="level-text">Intermediate</div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

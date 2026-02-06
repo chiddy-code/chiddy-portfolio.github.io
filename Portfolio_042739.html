@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Home</title>
+    <style>
+        :root {
+            /* MATCHING PALETTE */
+            --bg-main: #0f172a;
+            --bg-secondary: #1e293b;
+            --accent: #38bdf8;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 2rem;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .profile-pic-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-pic-container img {
+            width: 250px;
+            height: 250px;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            border: 2px solid var(--accent);
+            transition: transform 0.3s;
+        }
+
+        .profile-pic-container img:hover {
+            transform: scale(1.02);
+        }
+
+        .bio-content h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .bio-content h3 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .bio-text {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #cbd5e1;
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 12px 30px;
+            background-color: var(--accent);
+            color: var(--bg-main);
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: transform 0.2s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(56, 189, 248, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero-container">
+        <div class="profile-pic-container">
+            <img src="/assets/Me.png" alt="Chidera">
+        </div>
+        
+        <div class="bio-content">
+            <h1>Chidera Churchill</h1>
+            <h3>Software Dev •  Web Dev  • Student</h3>
+            <div class="bio-text">
+                <p>
+                    I am a student at Yakubu Gowon University (University of Abuja) and a passionate web developer. 
+                    I specialize in building responsive frontend interfaces using <b>HTML, CSS, and JavaScript</b> . 
+                </p>
+                <p>
+                    I also have proficiency in <b> Java, C++, Rust and C#</b> for software development and <b>Python</b> for data visualization.
+                </p>
+            </div>
+            <a href="Projects.html" class="cta-button">View My Work</a>
+        </div>
+    </div>
+
+</body>
+</html>

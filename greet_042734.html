@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <style>
+        :root {
+            --bg-main: #0f172a;
+            --accent: #38bdf8;
+            --text-main: #f1f5f9;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            width: 100%;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .greeting-container {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInOut 4s ease-in-out forwards;
+        }
+
+        .greeting-sub {
+            font-size: 1.5rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 0.5rem;
+        }
+
+        .greeting-main {
+            font-size: 4rem;
+            font-weight: bold;
+        }
+
+        /* Animation: Fade In -> Wait -> Fade Out */
+        @keyframes fadeInOut {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            20% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            80% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(1.05);
+            }
+        }
+
+        /* Mobile adjustment */
+        @media (max-width: 600px) {
+            .greeting-main { font-size: 2.5rem; }
+            .greeting-sub { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="greeting-container">
+        <div class="greeting-sub">Good</div>
+        <div class="greeting-main" id="time-text">Morning</div>
+    </div>
+
+    <script>
+        function setGreeting() {
+            const timeText = document.getElementById('time-text');
+            const subText = document.querySelector('.greeting-sub');
+            const hour = new Date().getHours();
+
+            if (hour >= 0 && hour < 12) {
+                timeText.innerHTML = "Morning";
+            } else if (hour >= 12 && hour < 18) {
+                timeText.innerHTML = "Afternoon";
+            } else {
+                timeText.innerHTML = "Evening";
+            }
+        }
+
+        // Run the greeting logic
+        setGreeting();
+
+        // Automatically redirect to Portfolio.html after 4.5 seconds
+        // (This matches the CSS animation length roughly)
+        setTimeout(() => {
+            window.location.href = "Portfolio.html";
+        }, 4100);
+    </script>
+
+</body>
+</html>

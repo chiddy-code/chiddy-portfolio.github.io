@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <style>
+        :root {
+            --bg-main: #0f172a;
+            --bg-card: #1e293b;
+            --accent: #38bdf8;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: 'Segoe UI', sans-serif;
+            padding: 2rem;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background-color: var(--bg-card);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border-color: var(--accent);
+        }
+
+        .card-header {
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            background: linear-gradient(45deg, var(--bg-card), #253347);
+        }
+
+        .project-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-weight: bold;
+            color: var(--bg-main);
+            font-size: 1.2rem;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--text-main);
+        }
+
+        .card-body {
+            padding: 1.5rem;
+            flex: 1;
+        }
+
+        .project-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .tech-stack {
+            margin-top: auto;
+            font-size: 0.8rem;
+            color: var(--accent);
+            text-align: right;
+            font-weight: 600;
+        }
+
+        .coming-soon {
+            filter: grayscale(1);
+            opacity: 0.7;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>My Projects</h2>
+
+    <div class="grid-container">
+
+        <div class="project-card">
+            <div class="card-header">
+                <div class="project-icon">S</div>
+                <div class="project-title">The Sea</div>
+            </div>
+            <div class="card-body">
+                <div class="project-desc">
+                    A web project highlighting the importance of marine life. Displays basic info about the sea using
+                    interactive elements.
+                </div>
+                <div class="tech-stack">HTML • CSS • JS</div>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="card-header">
+                <div class="project-icon">W</div>
+                <div class="project-title">Worker System</div>
+            </div>
+            <div class="card-body">
+                <div class="project-desc">
+                    Employee Management System (EMS). A CLI tool to manage company data with CRUD operations and file
+                    persistence.
+                </div>
+                <div class="tech-stack">Java • CLI</div>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="card-header">
+                <div class="project-icon">B</div>
+                <div class="project-title"> Bank System</div>
+            </div>
+            <div class="card-body">
+                <div class="project-desc">
+                    A Bank Management CLI that mimics real banking systems. Includes customer registration and JSON data
+                    persistence.
+                </div>
+                <div class="tech-stack">C# • JSON</div>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="card-header">
+                <div class="project-icon">C</div>
+                <div class="project-title">Calculator</div>
+            </div>
+            <div class="card-body">
+                <div class="project-desc">
+                    A desktop calculator app that solves linear & basic expressions and a few complex calculating
+                    methods
+                </div>
+                <div class="tech-stack">C# • GUI</div>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="card-header">
+                <div class="project-icon">G</div>
+                <div class="project-title">Game RPG(CLI)</div>
+            </div>
+            <div class="card-body">
+                <div class="project-desc">
+                    A CLI text-style turn-based game with Constant Enemy Spawning.
+                    (Persistence, plot & new features coming soon)
+                </div>
+                <div class="tech-stack">C++ • CLI</div>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="card-header">
+                <div class="project-icon">M</div>
+                <div class="project-title">MPSS Interpreter</div>
+            </div>
+            <div class="card-body">
+                <div class="project-desc">
+                    A key value Storage interpreter that reads a custom file format and translates it into a readable format for rust softwares/program and has CRUD capabilities for persistence.
+                </div>
+                <div class="tech-stack">Rust • CLI</div>
+            </div>
+        </div>
+
+        <div class="project-card coming-soon">
+            <div class="card-header">
+                <div class="project-icon">?</div>
+                <div class="project-title">News Site</div>
+            </div>
+            <div class="card-body">
+                <div class="project-desc">
+                    Currently in development.
+                </div>
+                <div class="tech-stack">Coming Soon</div>
+            </div>
+        </div>
+
+        <div class="project-card coming-soon">
+            <div class="card-header">
+                <div class="project-icon">?</div>
+                <div class="project-title">Server CLI Tool</div>
+            </div>
+            <div class="card-body">
+                <div class="project-desc">
+                    Currently in development.
+                </div>
+                <div class="tech-stack">GO • Coming Soon</div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
