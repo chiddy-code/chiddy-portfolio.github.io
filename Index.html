@@ -1,4 +1,6 @@
-    <html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/assets/site-icon.png" type="image/x-icon">
@@ -25,21 +27,20 @@
         body {
             height: 100vh;
             width: 100vw;
-            display: flex;
             background-color: var(--bg-main);
             color: var(--text-main);
-            overflow: hidden; /* Prevent double scrollbars */
+            display: flex;
         }
 
         /* --- SIDEBAR --- */
         .side-menu {
-            width: 60vw;
-height: 100vh;
+            width: 280px;
             background-color: var(--bg-secondary);
             border-right: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
             padding: 20px;
+            height: 100vh;
             transition: transform 0.3s ease;
             z-index: 100;
         }
@@ -47,7 +48,7 @@ height: 100vh;
         .profile-header {
             text-align: center;
             margin-bottom: 2rem;
-            padding-bottom: 1rem;
+            padding: 3rem 0;
             border-bottom: 1px solid var(--border-color);
         }
 
@@ -101,17 +102,17 @@ height: 100vh;
 
         /* --- MAIN CONTENT --- */
         .main-body {
-            flex: 1;
             display: flex;
             flex-direction: column;
-            position: relative;
+            height: 100vh;
+            flex: 1;
         }
 
         .mobile-header {
             display: none; /* Hidden on desktop */
             padding: 15px;
             background-color: var(--bg-secondary);
-            align-items: center;
+              align-items: center;
             justify-content: space-between;
             border-bottom: 1px solid var(--border-color);
         }
@@ -124,16 +125,32 @@ height: 100vh;
 
         iframe[name="net-screen"] {
             width: 100%;
-            height: -webkit-fill-available;
+            flex: 1;
             border: none;
             background-color: var(--bg-main);
         }
 
         /* --- MOBILE RESPONSIVENESS --- */
         @media (max-width: 768px) {
+            body {
+                display: block;
+            }
+
+            .sideBack {
+                background-color: #00000037;
+                height: 100vh;
+                width: 100vw;
+                position: absolute;
+                transform: translateX(-100%);   
+            }
+
+            .sideBack.active {
+                transform: translateX(0);
+            }
+
             .side-menu {
                 position: absolute;
-                height: 100vh%;
+                height: 100vh;
                 transform: translateX(-100%); /* Hide by default */
             }
 
@@ -161,22 +178,22 @@ height: 100vh;
     </style>
 </head>
 <body>
+    <div class="sideBack"></div>
 
-    <nav class="side-menu active" id="sideMenu">
-        <div class="close-btn" onclick="toggleMenu()">×</div>
+    <nav class="side-menu" id="sideMenu">
         <div class="profile-header">
-            <img class="profile-img" src="/assets/site-icon.png" alt="Chidera">
+            <img class="profile-img" src="/assets/W-logo.png" alt="Chidera">
             <div class="profile-name">CHIDDY</div>
         </div>
 
         <ul class="nav-links">
-            <li><a href="/portfolio" onclick="closeOnMobile()" target="net-screen">About Me</a></li>
-            <li><a href="/skills" onclick="closeOnMobile()" target="net-screen">Skills</a></li>
-            <li><a href="/projects" onclick="closeOnMobile()" target="net-screen">Projects</a></li>
+            <li><a href="Portfolio.html" target="net-screen" onclick="closeOnMobile()">About Me</a></li>
+            <li><a href="Skills.html" target="net-screen" onclick="closeOnMobile()">Skills</a></li>
+            <li><a href="Projects.html" target="net-screen" onclick="closeOnMobile()">Projects</a></li>
         </ul>
 
         <div class="footer">
-            © 2025 Chidera Churchill
+            &copy; 2025 Chidera Churchill
         </div>
     </nav>
 
@@ -186,23 +203,32 @@ height: 100vh;
             <span style="font-weight: bold; color: var(--text-main);">Portfolio</span>
         </div>
         
-        <iframe src="greet.html" name="net-screen"></iframe>
+        <iframe src="Portfolio.html" name="net-screen"></iframe>
     </div>
 
     <script>
         function toggleMenu() {
             document.getElementById('sideMenu').classList.toggle('active');
+             document.querySelector('.sideBack').classList.toggle('active');
         }
 
         function closeOnMobile() {
             if (window.innerWidth <= 768) {
                 document.getElementById('sideMenu').classList.remove('active');
+             document.querySelector('.sideBack').classList.remove('active');
+
             }
         }
-        closeOnMobile()
+
+         document.querySelector(".sideBack").addEventListener('click', function(e) {
+            if (e.target == this) {
+              closeOnMobile()
+            }
+         }
+        )
+
+        document.querySelector("iframe")
     </script>
 
-
-
 </body>
-    </html>
+</html>
