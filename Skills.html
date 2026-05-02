@@ -29,10 +29,8 @@
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-            gap: 1.5rem;
-            max-width: 1000px;
-            margin: 0 auto;
+            grid-template-columns: repeat(auto-fill, minmax(12em, 1fr));
+            gap: 1rem;
         }
 
         .skill-card {
@@ -42,6 +40,7 @@
             display: flex;
             align-items: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: -webkit-fill-available;
         }
 
         .skill-icon {
@@ -89,8 +88,30 @@
         }
 
         @media (max-width: 500px) {
+
+            .skill-card {
+            padding: 1.5rem 0;
+            align-content: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            }
+
+            .skill-icon {
+                margin: 0 0 1em 0;
+            }
+
             .skills-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(auto-fill, minmax(7.5em, 1fr));
+            }
+
+            body {
+                padding: 2em 0;
+                margin: 7vw;
+            }
+
+            span {
+                flex: 1;
             }
         }
     </style>
@@ -103,26 +124,20 @@
     <div class="skills-grid">
 
         <div class="skill-card">
-            <img src="/assets/HTML5.png" alt="HTML" class="skill-icon">
+            <img src="/assets/HTML.png" alt="HTML" class="skill-icon">
             <div class="skill-info">
                 <div class="skill-header">
                     <span>HTML</span>
-                </div>
-                <div class="progress-bg">
-                    <div class="progress-fill" style="width: 91%"></div>
                 </div>
                 <div class="level-text">Master</div>
             </div>
         </div>
 
         <div class="skill-card">
-            <img src="/assets/CSS3.png" alt="CSS" class="skill-icon">
+            <img src="/assets/CSS.png" alt="CSS" class="skill-icon">
             <div class="skill-info">
                 <div class="skill-header">
                     <span>CSS</span>
-                </div>
-                <div class="progress-bg">
-                    <div class="progress-fill" style="width: 78%"></div>
                 </div>
                 <div class="level-text">Expert</div>
             </div>
@@ -134,9 +149,6 @@
                 <div class="skill-header">
                     <span>JavaScript</span>
                 </div>
-                <div class="progress-bg">
-                    <div class="progress-fill" style="width: 70%"></div>
-                </div>
                 <div class="level-text">Advanced</div>
             </div>
         </div>
@@ -146,9 +158,6 @@
             <div class="skill-info">
                 <div class="skill-header">
                     <span>C#</span>
-                </div>
-                <div class="progress-bg">
-                    <div class="progress-fill" style="width: 59%"></div>
                 </div>
                 <div class="level-text">Intermediate</div>
             </div>
@@ -160,9 +169,6 @@
                 <div class="skill-header">
                     <span>Java</span>
                 </div>
-                <div class="progress-bg">
-                    <div class="progress-fill" style="width: 51%"></div>
-                </div>
                 <div class="level-text">Intermediate</div>
             </div>
         </div>
@@ -173,10 +179,7 @@
                 <div class="skill-header">
                     <span>C++</span>
                 </div>
-                <div class="progress-bg">
-                    <div class="progress-fill" style="width: 70%"></div>
-                </div>
-                <div class="level-text">Advanced</div>
+               <div class="level-text">Advanced</div>
             </div>
         </div>
 
@@ -185,9 +188,6 @@
             <div class="skill-info">
                 <div class="skill-header">
                     <span>Python</span>
-                </div>
-                <div class="progress-bg">
-                    <div class="progress-fill" style="width: 53%"></div>
                 </div>
                 <div class="level-text">Intermediate</div>
             </div>
@@ -199,9 +199,6 @@
                 <div class="skill-header">
                     <span>Rust</span>
                 </div>
-                <div class="progress-bg">
-                    <div class="progress-fill" style="width: 68%"></div>
-                </div>
                 <div class="level-text">Intermediate</div>
             </div>
         </div>
@@ -212,12 +209,19 @@
                 <div class="skill-header">
                     <span>Go</span>
                 </div>
-                <div class="progress-bg">
-                    <div class="progress-fill" style="width: 50%"></div>
+                <div class="level-text">Intermediate</div>
+            </div>
+        </div>
+
+        <div class="skill-card">
+            <img src="/assets/R.jpg" alt="Java" class="skill-icon">
+            <div class="skill-info">
+                <div class="skill-header">
+                    <span>R Language</span>
                 </div>
                 <div class="level-text">Intermediate</div>
             </div>
-        </div>
+        </div>
 
     </div>
 
