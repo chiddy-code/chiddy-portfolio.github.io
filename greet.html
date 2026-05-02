@@ -75,30 +75,11 @@
 <body>
 
     <div class="greeting-container">
-        <div class="greeting-sub">Good</div>
-        <div class="greeting-main" id="time-text">Morning</div>
+        <div class="greeting-sub">Hey</div>
+        <div class="greeting-main" id="time-text">There</div>
     </div>
 
     <script>
-        function setGreeting() {
-            const timeText = document.getElementById('time-text');
-            const subText = document.querySelector('.greeting-sub');
-            const hour = new Date().getHours();
-
-            if (hour >= 0 && hour < 12) {
-                timeText.innerHTML = "Morning";
-            } else if (hour >= 12 && hour < 18) {
-                timeText.innerHTML = "Afternoon";
-            } else {
-                timeText.innerHTML = "Evening";
-            }
-        }
-
-        // Run the greeting logic
-        setGreeting();
-
-        // Automatically redirect to Portfolio.html after 4.5 seconds
-        // (This matches the CSS animation length roughly)
         setTimeout(() => {
             window.location.href = "Portfolio.html";
         }, 4100);
