@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chidera — Tech Stack</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Syne:wght@400;700;800&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:      #080C14;
+    --panel:   #0D1525;
+    --border:  #1A2A45;
+    --cyan:    #00D4FF;
+    --green:   #00FF88;
+    --amber:   #FFB800;
+    --purple:  #A855F7;
+    --red:     #FF4560;
+    --text:    #C9D8F0;
+    --dim:     #4A6080;
+    --mono:    'Share Tech Mono', monospace;
+    --display: 'Syne', sans-serif;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--mono);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    overflow-x: hidden;
+  }
+
+  .card {
+    width: 900px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* animated circuit-trace corners */
+  .card::before, .card::after {
+    content: '';
+    position: absolute;
+    width: 120px; height: 120px;
+    border: 2px solid var(--cyan);
+    opacity: 0.18;
+  }
+  .card::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+  .card::after  { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+
+  /* scanline overlay */
+  .scanlines {
+    position: absolute; inset: 0; pointer-events: none;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(0,0,0,0.07) 3px,
+      rgba(0,0,0,0.07) 4px
+    );
+    z-index: 0;
+  }
+
+  .content { position: relative; z-index: 1; }
+
+  /* ── HEADER ── */
+  .header { margin-bottom: 36px; }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--cyan);
+    opacity: 0.7;
+    margin-bottom: 8px;
+  }
+
+  .name {
+    font-family: var(--display);
+    font-size: 52px;
+    font-weight: 800;
+    line-height: 1;
+    color: #fff;
+    letter-spacing: -1px;
+  }
+  .name span { color: var(--cyan); }
+
+  .tagline {
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--dim);
+    letter-spacing: 1px;
+  }
+  .tagline b { color: var(--amber); font-weight: normal; }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, var(--cyan) 0%, var(--purple) 50%, transparent 100%);
+    margin: 28px 0;
+    opacity: 0.4;
+  }
+
+  /* ── STAT ROW ── */
+  .stats {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+  }
+  .stat { display: flex; flex-direction: column; }
+  .stat-num {
+    font-family: var(--display);
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1;
+  }
+  .stat-label { font-size: 10px; letter-spacing: 2px; color: var(--dim); margin-top: 4px; }
+
+  /* ── LANGUAGE GRID ── */
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--dim);
+    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+
+  .lang-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+
+  .lang-chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 14px;
+    border-radius: 3px;
+    border: 1px solid;
+    font-size: 13px;
+    font-family: var(--mono);
+    transition: opacity 0.2s;
+  }
+  .lang-chip .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .c1  { border-color: #00D4FF44; color: var(--cyan);   } .c1 .dot  { background: var(--cyan); }
+  .c2  { border-color: #00FF8844; color: var(--green);  } .c2 .dot  { background: var(--green); }
+  .c3  { border-color: #FFB80044; color: var(--amber);  } .c3 .dot  { background: var(--amber); }
+  .c4  { border-color: #A855F744; color: var(--purple); } .c4 .dot  { background: var(--purple); }
+  .c5  { border-color: #FF456044; color: var(--red);    } .c5 .dot  { background: var(--red); }
+
+  /* ── STACK DOMAINS ── */
+  .domains {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .domain {
+    background: #0A1220;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 16px;
+    position: relative;
+  }
+
+  .domain::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    border-radius: 3px 0 0 3px;
+  }
+  .dom-mobile::before  { background: var(--cyan); }
+  .dom-systems::before { background: var(--red); }
+  .dom-backend::before { background: var(--green); }
+  .dom-web::before     { background: var(--amber); }
+  .dom-data::before    { background: var(--purple); }
+  .dom-tools::before   { background: #FF6B6B; }
+
+  .domain-title {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 10px;
+  }
+  .domain-items {
+    font-size: 12px;
+    color: var(--text);
+    line-height: 1.8;
+  }
+  .domain-items span {
+    display: inline-block;
+    margin-right: 6px;
+  }
+
+  /* ── FOOTER STRIP ── */
+  .footer-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 8px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-sig {
+    font-size: 11px;
+    color: var(--dim);
+  }
+  .footer-sig b { color: var(--cyan); font-weight: normal; }
+
+  .build-badge {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--green);
+    border: 1px solid #00FF8828;
+    padding: 5px 12px;
+    border-radius: 2px;
+  }
+  .build-badge::before { content: '● '; animation: blink 1.4s infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+
+  /* glow behind name */
+  .glow-blob {
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(0,212,255,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="scanlines"></div>
+  <div class="glow-blob"></div>
+  <div class="content">
+
+    <div class="header">
+      <div class="eyebrow">// DEVELOPER PROFILE</div>
+      <div class="name">Chid<span>era</span></div>
+      <div class="tagline">
+        Somewhere between machine code and mobile UI &nbsp;·&nbsp;
+        <b>Abuja, Nigeria 🇳🇬</b>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="stat-num" style="color:var(--cyan)">13</span>
+        <span class="stat-label">PROG. LANGUAGES</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" style="color:var(--green)">6</span>
+        <span class="stat-label">TECH DOMAINS</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" style="color:var(--amber)">0</span>
+        <span class="stat-label">SHORTCUTS TAKEN</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" style="color:var(--purple)">∞</span>
+        <span class="stat-label">BUGS FIXED</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-label">// Programming Languages</div>
+    <div class="lang-grid">
+      <div class="lang-chip c5"><span class="dot"></span>Rust</div>
+      <div class="lang-chip c1"><span class="dot"></span>Kotlin</div>
+      <div class="lang-chip c2"><span class="dot"></span>Go</div>
+      <div class="lang-chip c3"><span class="dot"></span>Java</div>
+      <div class="lang-chip c4"><span class="dot"></span>C</div>
+      <div class="lang-chip c4"><span class="dot"></span>C++</div>
+      <div class="lang-chip c3"><span class="dot"></span>C#</div>
+      <div class="lang-chip c2"><span class="dot"></span>Python</div>
+      <div class="lang-chip c1"><span class="dot"></span>JavaScript</div>
+      <div class="lang-chip c5"><span class="dot"></span>PHP</div>
+      <div class="lang-chip c3"><span class="dot"></span>HTML</div>
+      <div class="lang-chip c1"><span class="dot"></span>CSS</div>
+      <div class="lang-chip c2"><span class="dot"></span>R</div>
+    </div>
+
+    <div class="section-label">// Tech Domains</div>
+    <div class="domains">
+
+      <div class="domain dom-mobile">
+        <div class="domain-title">Mobile</div>
+        <div class="domain-items">
+          <span>Android</span><span>Jetpack Compose</span>
+          <span>State Hoisting</span><span>Animations</span>
+          <span>Flutter (exp.)</span>
+        </div>
+      </div>
+
+      <div class="domain dom-systems">
+        <div class="domain-title">Systems & OS</div>
+        <div class="domain-items">
+          <span>WPF · XAML</span><span>.NET</span>
+          <span>Registry Hacks</span><span>winRE</span>
+          <span>DISM/SFC</span><span>Cargo</span>
+        </div>
+      </div>
+
+      <div class="domain dom-backend">
+        <div class="domain-title">Backend & Networking</div>
+        <div class="domain-items">
+          <span>TCP/UDP Sockets</span><span>REST APIs</span>
+          <span>Java Servers</span><span>Rust Networking</span>
+        </div>
+      </div>
+
+      <div class="domain dom-web">
+        <div class="domain-title">Web & Desktop UI</div>
+        <div class="domain-items">
+          <span>Offline-first apps</span><span>JSON persistence</span>
+          <span>Tkinter</span><span>PyQt</span>
+          <span>Visual Studio</span>
+        </div>
+      </div>
+
+      <div class="domain dom-data">
+        <div class="domain-title">Data & ML</div>
+        <div class="domain-items">
+          <span>Matplotlib</span><span>scikit-learn</span>
+          <span>R Analysis</span><span>PDF Gen</span>
+          <span>PyInstaller CLI</span>
+        </div>
+      </div>
+
+      <div class="domain dom-tools">
+        <div class="domain-title">Toolchains & Build</div>
+        <div class="domain-items">
+          <span>Gradle</span><span>Android NDK</span>
+          <span>CMake</span><span>Conda</span>
+          <span>Git</span><span>Cargo</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="footer-strip">
+      <div class="footer-sig">
+        <b>freelance dev</b> &nbsp;·&nbsp; Fiverr &amp; Upwork &nbsp;·&nbsp; I fix what others reinstall
+      </div>
+      <div class="build-badge">ALWAYS COMPILING</div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
